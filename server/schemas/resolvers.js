@@ -4,7 +4,6 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     // get a single user by either their id or their username
-    // TO DO: also find by username
     Query: {
         me: async (parent, args, context) => {
             if (context.user) {
@@ -12,7 +11,7 @@ const resolvers = {
 
                 return user
             }
-            throw new AuthenticationError('Need to logged in');
+            throw new AuthenticationError('Need to be logged in');
         },
     },
 

@@ -18,6 +18,7 @@ const LoginForm = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
+  // function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(userFormData);
@@ -34,12 +35,6 @@ const LoginForm = () => {
         variables: { ...userFormData },
       });
 
-      if (!{ data }) {
-        throw new Error('something went wrong!');
-      }
-
-      // const { token, user } = await data.json();
-      // console.log(user);
       Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
